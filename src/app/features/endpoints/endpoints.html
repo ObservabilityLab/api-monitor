@@ -1,0 +1,23 @@
+<h2 class="text-3xl font-bold mb-6">Manage Endpoints</h2>
+
+<div class="bg-white p-6 rounded shadow max-w-lg">
+  <label class="block mb-2 font-semibold"> Endpoint Name </label>
+
+  <input
+    type="text"
+    [(ngModel)]="endpointName"
+    placeholder="/products"
+    class="w-full border p-3 rounded mb-4"
+  />
+  <label class="block mb-2 font-semibold"> Endpoint URL </label>
+
+  <input
+    type="text"
+    [(ngModel)]="endpointUrl"
+    placeholder="https://api.example.com/users"
+    class="w-full border p-3 rounded mb-4"
+  />
+  <button (click)="addEndpoint()" class="bg-blue-600 text-white px-4 py-2 rounded">
+    Add Endpoint
+  </button>
+</div>
