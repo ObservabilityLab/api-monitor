@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EndpointState } from '../../core/services/endpoint-state';
 import { Monitor } from '../../core/services/monitor';
 import { ResponseChart } from '../../shared/components/response-chart/response-chart';
+import { ApiService } from '../../core/services/api';
 
 // Define the trend type at the top of your component
 type TrendType = 'improving' | 'degrading' | 'stable';
@@ -23,6 +24,7 @@ export class Dashboard implements OnInit, OnDestroy {
   constructor(
     private endpointState: EndpointState,
     private monitorService: Monitor,
+    private apiService: ApiService,
   ) {
     this.apis = this.endpointState.endpoints;
     this.healthyCount = this.endpointState.healthyCount;
@@ -40,6 +42,7 @@ export class Dashboard implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.loadEndpoints();
     this.startMonitoring();
   }
 
@@ -50,9 +53,12 @@ export class Dashboard implements OnInit, OnDestroy {
   startMonitoring() {
     this.checkAllApis();
 
-    this.intervalId = setInterval(() => {
-      this.checkAllApis();
-    }, 60 * 1000);
+    this.intervalId = setInterval(
+      () => {
+        this.checkAllApis();
+      },
+      24 * 60 * 60 * 1000,
+    );
   }
 
   async checkAllApis() {
@@ -64,6 +70,19 @@ export class Dashboard implements OnInit, OnDestroy {
         time: result.time,
       });
     }
+  }
+
+  loadEndpoints() {
+    this.apiService.getEndpoints().subscribe((endpoints) => {
+      this.endpointState.endpoints.set(
+        endpoints.map((endpoint) => ({
+          ...endpoint,
+          status: 'OK',
+          time: 0,
+          history: [],
+        })),
+      );
+    });
   }
 
   //  helper methods
