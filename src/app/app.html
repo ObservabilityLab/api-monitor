@@ -1,17 +1,70 @@
-<div class="flex h-screen bg-gray-100">
+<div class="flex h-screen bg-gradient-to-br from-gray-50 to-gray-100">
   <!-- Sidebar -->
-  <aside class="w-64 bg-gray-900 text-white p-4">
-    <h1 class="text-2xl font-bold mb-8">API Monitor</h1>
+  <aside class="w-64 bg-gradient-to-b from-gray-900 to-gray-800 text-white shadow-xl">
+    <div class="p-6">
+      <h1 class="text-2xl font-semibold tracking-tight">
+        API<span class="text-blue-400">Monitor</span>
+      </h1>
+      <p class="text-xs text-gray-400 mt-1 tracking-wide">Real-time insights</p>
+    </div>
 
-    <nav class="flex flex-col gap-3">
-      <a routerLink="/" class="p-2 rounded hover:bg-gray-700"> Dashboard </a>
+    <nav class="flex flex-col gap-1 px-4">
+      <a
+        routerLink="/"
+        routerLinkActive="bg-gray-800 text-white"
+        class="px-3 py-2.5 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/70 transition-all duration-200"
+      >
+        <span class="flex items-center gap-3">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+            ></path>
+          </svg>
+          Dashboard
+        </span>
+      </a>
 
-      <a routerLink="/endpoints" class="p-2 rounded hover:bg-gray-700"> Endpoints </a>
+      <a
+        routerLink="/endpoints"
+        routerLinkActive="bg-gray-800 text-white"
+        class="px-3 py-2.5 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-800/70 transition-all duration-200"
+      >
+        <span class="flex items-center gap-3">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 10V3L4 14h7v7l9-11h-7z"
+            ></path>
+          </svg>
+          Endpoints
+        </span>
+      </a>
     </nav>
+
+    <!-- <div class="absolute bottom-0 w-64 p-6 border-t border-gray-800">
+      <div class="flex items-center gap-3">
+        <div
+          class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center"
+        >
+          <span class="text-xs font-semibold">U</span>
+        </div>
+        <div class="flex-1">
+          <p class="text-xs font-medium">Admin User</p>
+          <p class="text-xs text-gray-400">admin@apimonitor.com</p>
+        </div>
+      </div>
+    </div> -->
   </aside>
 
   <!-- Main Content -->
-  <main class="flex-1 p-6 overflow-auto">
-    <router-outlet></router-outlet>
+  <main class="flex-1 overflow-auto">
+    <div class="p-8">
+      <router-outlet></router-outlet>
+    </div>
   </main>
 </div>

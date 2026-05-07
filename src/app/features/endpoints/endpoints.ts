@@ -23,6 +23,7 @@ export class Endpoints {
       url: this.endpointUrl,
       status: 'PENDING',
       time: 0,
+      history: [],
     });
 
     this.endpointName = '';
