@@ -53,7 +53,7 @@ export class EndpointState {
               timestamp: Date.now(),
               responseTime: updates.time || 0,
             },
-          ];
+          ].slice(-20);
 
           return {
             ...endpoint,
